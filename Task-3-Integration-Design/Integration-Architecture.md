@@ -1,0 +1,13 @@
+# Task 3 – Integration Architecture
+
+When a user submits the consultation form on the landing page, the request will first be sent to a backend API instead of directly to HubSpot. I would use a Node.js and Express API because it provides better validation, error handling, logging, and flexibility than connecting directly through automation tools such as Zapier or Make. The backend validates the submitted name and phone number before processing the request.
+
+The backend then checks HubSpot for an existing contact using the phone number. Since HubSpot's default deduplication primarily works with email addresses and this form only collects a phone number, I would first search the CRM using the Contacts Search API with the phone property. If a matching phone number is found, the existing contact is updated with the latest enquiry details, including the lead source and lead status. If no contact exists, a new contact is created. This approach avoids duplicate records while ensuring repeat enquiries are tracked correctly.
+
+After HubSpot successfully processes the contact, the backend calls the Karix WhatsApp Business API to send a confirmation message to the patient. Using the backend instead of calling Karix directly from the browser keeps API credentials secure and allows retries if the messaging service is temporarily unavailable.
+
+At the same time, the landing page pushes the `consultation_form_submitted` event to the dataLayer. Google Tag Manager captures this event, sends it to Google Analytics 4 (GA4), and the event is imported into Google Ads as a conversion. This allows campaigns to optimise for actual consultation enquiries instead of page views or button clicks.
+
+The biggest failure point in this architecture is an API failure between the backend and HubSpot or Karix. To minimise this risk, failed requests should be logged and placed into a retry queue with automatic retries. If retries continue to fail, the operations team should receive an alert through Slack or email so the enquiry can be processed manually.
+
+The WhatsApp confirmation has a two-minute SLA, which could be affected by API outages, rate limiting, network delays, or server failures. To monitor this, every submission should record the form submission timestamp and the WhatsApp delivery timestamp. A monitoring dashboard can compare these timestamps and automatically generate alerts whenever delivery exceeds two minutes, allowing the team to investigate and resolve issues quickly.
