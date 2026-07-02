@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Book an Orthopaedic Consultation | OrthoNow</title>
+
+<meta
+name="description"
+content="Book an orthopaedic consultation for knee and back pain at OrthoNow. Same-day appointments available across Bengaluru.">
+
+<link rel="icon" href="data:,">
+
+<style>
+
+
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+
+font-family:
+Arial,
+Helvetica,
+sans-serif;
+
+background:#F6F9FC;
+
+color:#1F2937;
+
+line-height:1.6;
+
+}
+
+
+
+.header{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+padding:20px 8%;
+
+background:#fff;
+
+box-shadow:0 3px 12px rgba(0,0,0,.05);
+
+position:sticky;
+
+top:0;
+
+z-index:1000;
+
+}
+
+.logo{
+
+font-size:28px;
+
+font-weight:bold;
+
+color:#0F4C81;
+
+}
+
+.call-btn{
+
+background:#0F4C81;
+
+color:#fff;
+
+text-decoration:none;
+
+padding:12px 22px;
+
+border-radius:10px;
+
+font-weight:bold;
+
+transition:.3s;
+
+}
+
+.call-btn:hover{
+
+background:#0B3C65;
+
+}
+
+
+
+.container{
+
+width:90%;
+
+max-width:1200px;
+
+margin:auto;
+
+}
+
+.hero{
+
+display:grid;
+
+grid-template-columns:1fr 1fr;
+
+gap:60px;
+
+align-items:center;
+
+padding:70px 0;
+
+}
+
+.badge{
+
+display:inline-block;
+
+background:#DCFCE7;
+
+color:#166534;
+
+padding:8px 16px;
+
+border-radius:30px;
+
+font-size:14px;
+
+font-weight:bold;
+
+margin-bottom:20px;
+
+}
+
+.hero h1{
+
+font-size:48px;
+
+line-height:1.2;
+
+margin-bottom:20px;
+
+}
+
+.hero span{
+
+color:#0F4C81;
+
+}
+
+.subtitle{
+
+font-size:18px;
+
+color:#4B5563;
+
+margin-bottom:30px;
+
+}
+
+.stats{
+
+display:flex;
+
+gap:18px;
+
+margin-top:35px;
+
+flex-wrap:wrap;
+
+}
+
+.stat{
+
+background:#fff;
+
+padding:20px;
+
+border-radius:14px;
+
+box-shadow:0 8px 25px rgba(0,0,0,.06);
+
+text-align:center;
+
+flex:1;
+
+min-width:130px;
+
+}
+
+.stat h2{
+
+color:#0F4C81;
+
+margin-bottom:8px;
+
+}
+
+
+
+.form-card{
+
+background:#fff;
+
+padding:35px;
+
+border-radius:18px;
+
+box-shadow:0 15px 40px rgba(0,0,0,.08);
+
+}
+
+.form-card h2{
+
+margin-bottom:10px;
+
+color:#0F4C81;
+
+}
+
+.form-card p{
+
+margin-bottom:25px;
+
+color:#6B7280;
+
+}
+
+label{
+
+display:block;
+
+margin-bottom:8px;
+
+font-weight:bold;
+
+}
+
+input{
+
+width:100%;
+
+padding:15px;
+
+border:1px solid #D1D5DB;
+
+border-radius:10px;
+
+font-size:16px;
+
+margin-bottom:18px;
+
+}
+
+input:focus{
+
+outline:none;
+
+border-color:#0F4C81;
+
+}
+
+.submit-btn{
+
+width:100%;
+
+padding:16px;
+
+background:#0F4C81;
+
+color:#fff;
+
+border:none;
+
+border-radius:10px;
+
+font-size:18px;
+
+font-weight:bold;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+.submit-btn:hover{
+
+background:#0B3C65;
+
+}
+
+.trust{
+
+margin-top:25px;
+
+}
+
+.trust p{
+
+margin-bottom:10px;
+
+}
+
+
+
+.review{
+
+margin-top:35px;
+
+background:#EEF6FF;
+
+padding:22px;
+
+border-radius:15px;
+
+}
+
+.review h3{
+
+margin-bottom:12px;
+
+color:#0F4C81;
+
+}
+
+
+
+.doctors{
+
+padding:70px 0;
+
+text-align:center;
+
+}
+
+.doctors h2{
+
+font-size:36px;
+
+margin-bottom:20px;
+
+color:#0F4C81;
+
+}
+
+.cards{
+
+display:grid;
+
+grid-template-columns:repeat(3,1fr);
+
+gap:25px;
+
+margin-top:40px;
+
+}
+
+.card{
+
+background:#fff;
+
+padding:30px;
+
+border-radius:16px;
+
+box-shadow:0 10px 30px rgba(0,0,0,.06);
+
+}
+
+.card h3{
+
+margin-bottom:10px;
+
+}
+
+
+
+footer{
+
+background:#0F4C81;
+
+color:#fff;
+
+text-align:center;
+
+padding:30px 20px;
+
+margin-top:70px;
+
+}
+
+footer p{
+
+margin:6px 0;
+
+}
+
+
+
+#thankyou{
+
+display:none;
+
+text-align:center;
+
+padding:40px 20px;
+
+}
+
+#thankyou h2{
+
+color:#16A34A;
+
+margin-bottom:15px;
+
+font-size:32px;
+
+}
+
+
+
+.whatsapp{
+
+position:fixed;
+
+right:20px;
+
+bottom:20px;
+
+width:60px;
+
+height:60px;
+
+border-radius:50%;
+
+background:#25D366;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+font-size:30px;
+
+text-decoration:none;
+
+color:#fff;
+
+box-shadow:0 8px 20px rgba(0,0,0,.25);
+
+transition:.3s;
+
+}
+
+.whatsapp:hover{
+
+transform:scale(1.08);
+
+}
+
+
+
+@media(max-width:900px){
+
+.hero{
+
+grid-template-columns:1fr;
+
+gap:40px;
+
+}
+
+.cards{
+
+grid-template-columns:1fr;
+
+}
+
+.hero h1{
+
+font-size:36px;
+
+}
+
+.header{
+
+padding:18px 5%;
+
+}
+
+.call-btn{
+
+padding:10px 16px;
+
+font-size:14px;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header class="header">
+
+<div class="logo">
+🦴 OrthoNow
+</div>
+
+<a
+href="tel:+918001234567"
+class="call-btn"
+id="callNowBtn">
+
+📞 Call Now
+
+</a>
+
+</header>
+
+<div class="container">
+
+<section class="hero">
+
+<div>
+
+<div class="badge">
+
+★★★★★ Rated 4.8/5 by 50,000+ Patients
+
+</div>
+
+<h1>
+
+Stop Living With
+
+<span>Knee & Back Pain.</span>
+
+</h1>
+
+<p class="subtitle">
+
+Book an appointment with experienced orthopaedic specialists across 9 clinics in Bengaluru. Same-day consultations available.
+
+</p>
+
+<div class="stats">
+
+<div class="stat">
+
+<h2>9</h2>
+
+<p>Clinics</p>
+
+</div>
+
+<div class="stat">
+
+<h2>20+</h2>
+
+<p>Specialists</p>
+
+</div>
+
+<div class="stat">
+
+<h2>50K+</h2>
+
+<p>Patients Treated</p>
+
+</div>
+
+</div>
+
+<div class="review">
+
+<h3>⭐⭐⭐⭐⭐ Patient Review</h3>
+
+<p>
+
+"I booked my consultation online and received a call within minutes. Excellent doctors and smooth experience."
+
+</p>
+
+<strong>
+
+— Rahul Sharma, Bengaluru
+
+</strong>
+
+</div>
+
+</div>
+
+<div>
+
+<div class="form-card" id="formCard">
+
+<h2>
+
+Book Your Consultation
+
+</h2>
+
+<p>
+
+Fill your details below and our care team will contact you shortly.
+
+</p>
+
+<form id="consultationForm">
+
+<label for="name">
+
+Full Name
+
+</label>
+
+<input
+
+type="text"
+
+id="name"
+
+required
+
+placeholder="Enter your name">
+
+<label for="phone">
+
+Phone Number
+
+</label>
+
+<input
+
+type="tel"
+
+id="phone"
+
+required
+
+pattern="[0-9]{10}"
+
+placeholder="10-digit mobile number">
+
+<button
+
+class="submit-btn"
+
+type="submit">
+
+Book My Consultation
+
+</button>
+
+<p class="privacy-text">
+    🔒 Your information is secure and will only be used to schedule your consultation.
+    </p>
+
+</form>
+
+<div class="trust">
+
+<p>✔ Same-Day Appointment</p>
+
+<p>✔ Experienced Orthopaedic Specialists</p>
+
+<p>✔ Trusted Across Bengaluru</p>
+
+</div>
+
+</div>
+
+<div id="thankyou">
+
+<h2>
+
+🎉 Thank You!
+
+</h2>
+
+<p>
+
+Your consultation request has been received.
+
+</p>
+
+<br>
+
+<p>
+
+Our team will contact you within <strong>15 minutes.</strong>
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="doctors">
+
+<h2>
+
+Why Choose OrthoNow?
+
+</h2>
+
+<div class="cards">
+
+<div class="card">
+
+<h3>
+
+👨‍⚕️ Experienced Doctors
+
+</h3>
+
+<p>
+
+15+ years average experience treating knee, back and joint conditions.
+
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>
+
+🏥 9 Clinics
+
+</h3>
+
+<p>
+
+Convenient locations across Bengaluru with flexible appointment slots.
+
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>
+
+⚡ Fast Appointments
+
+</h3>
+
+<p>
+
+Get confirmation quickly and avoid long waiting times.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+</div>
+
+<footer>
+
+<p>
+
+© 2026 OrthoNow Healthcare
+
+</p>
+
+<p>
+
+9 Clinics • Bengaluru
+
+</p>
+
+<p>
+
+Mon–Sat | 8 AM – 8 PM
+
+</p>
+
+</footer>
+
+<a
+
+href="https://wa.me/918001234567"
+
+target="_blank"
+
+class="whatsapp"
+
+id="whatsappBtn">
+
+💬
+
+</a>
+
+<script>
+
+window.dataLayer = window.dataLayer || [];
+
+document.getElementById("consultationForm").addEventListener("submit",function(e){
+
+e.preventDefault();
+
+const name=document.getElementById("name").value.trim();
+
+const phone=document.getElementById("phone").value.trim();
+
+if(phone.length!==10){
+
+alert("Please enter a valid 10-digit phone number.");
+
+return;
+
+}
+
+window.dataLayer.push({
+
+event:"consultation_form_submitted",
+
+form_name:"consultation_landing_page",
+
+city:"Bengaluru",
+
+lead_source:"Google Ads",
+
+patient_name:name,
+
+phone_last4:phone.slice(-4)
+
+});
+
+console.log("Form Event Fired");
+
+console.log(window.dataLayer);
+
+document.getElementById("formCard").style.display="none";
+
+document.getElementById("thankyou").style.display="block";
+
+});
+
+document.getElementById("callNowBtn").addEventListener("click",function(){
+
+window.dataLayer.push({
+
+event:"call_now_clicked",
+
+location:"header",
+
+city:"Bengaluru"
+
+});
+
+console.log(window.dataLayer);
+
+});
+
+document.getElementById("whatsappBtn").addEventListener("click",function(){
+
+window.dataLayer.push({
+
+event:"whatsapp_clicked",
+
+location:"floating_button",
+
+city:"Bengaluru"
+
+});
+
+console.log(window.dataLayer);
+
+});
+
+</script>
+
+</body>
+
+</html>
